@@ -1,8 +1,8 @@
-name: Build Docker Image
+name: Build Docker Image And Push this to Docker Hub
 on:
   push:
     branches:
-      - main
+      - [ main ]
 jobs:
     build:
       name: push docker image to docker hub
@@ -12,15 +12,14 @@ jobs:
         - name: login to docker hub
           id: docker-hub
           env:
-            username: shoyeb101
-            password: ${{secrets.DOCKERHUB_PASSWORD}}
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_PASSWORD }}
           run: |
             docker login -u $username -p $password 
         - name: build the docker image
           id: build-docker-image
-          run: |
-            ls -la 
-            docker build . -t shoyeb101/shoyeb_test:latest
+          run: | 
+            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoyeb_test:latest
         - name: push the docker image
           id: push-docker-image
-          run: docker push shoyeb101/shoyeb_test:latest
+          run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/shoyeb_test:latest
