@@ -2,7 +2,7 @@ name: Build Docker Image And Push this to Docker Hub
 on:
   push:
     branches:
-      - [ main ]
+      - main
 jobs:
     build:
       name: push docker image to docker hub
