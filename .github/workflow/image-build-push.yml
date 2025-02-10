@@ -12,7 +12,7 @@ jobs:
         - name: login to docker hub
           id: docker-hub
           env:
-            username: ${{secrets.DOCKERHUB_USERNAME}}
+            username: shoyeb101
             password: ${{secrets.DOCKERHUB_PASSWORD}}
           run: |
             docker login -u $username -p $password 
