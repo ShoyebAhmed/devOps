@@ -19,7 +19,7 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: | 
-            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoyeb_test:latest
+            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoyeb_test:latest .
         - name: push the docker image
           id: push-docker-image
           run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/shoyeb_test:latest
