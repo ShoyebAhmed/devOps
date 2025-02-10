@@ -20,7 +20,7 @@ jobs:
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f Dockerfile -t shoyeb101/shoyeb_test:latest
+            docker build . -t shoyeb101/shoyeb_test:latest
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/shoyeb_test:latest
+          run: docker push shoyeb101/shoyeb_test:latest
